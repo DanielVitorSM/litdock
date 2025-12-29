@@ -1,0 +1,9 @@
+# Bloqueia todos os bots de acessarem a área logada e API
+User-agent: *
+Allow: /
+Disallow: /app/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /assets/
+
+Sitemap: https://litdock.com/sitemap.xml

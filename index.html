@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>LitDock - Gerenciador de Referências</title>
+  <meta name="description"
+    content="LitDock é o seu gerenciador de referências bibliográficas moderno. Organize papers, livros e artigos com facilidade.">
+  <meta name="author" content="LitDock Team">
+  <meta name="keywords" content="referências, bibliografia, abnt, apa, gerenciador, acadêmico, pesquisa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://litdock.com/">
+  <meta property="og:title" content="LitDock - Gerenciador de Referências">
+  <meta property="og:description"
+    content="Organize sua vida acadêmica. Salve, gerencie e cite referências bibliográficas de forma simples e moderna.">
+  <meta property="og:image" content="https://litdock.com/banner.jpg">
+  <meta property="og:image:width" content="1762">
+  <meta property="og:image:height" content="992">
+  <meta property="og:site_name" content="Litdock">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LitDock - Gerenciador de Referências">
+  <meta name="twitter:description" content="Organize sua vida acadêmica com o LitDock.">
+  <meta name="twitter:image" content="https://litdock.com/banner.jpg">
+
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#262626" media="(prefers-color-scheme: dark)">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="LitDock">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <style>
+    #boot-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: fixed;
+      z-index: 9999;
+      background-color: oklch(0.141 0.005 285.823);
+      transition: opacity 0.3s ease;
+    }
+
+    #boot-loading.hide {
+      opacity: 0;
+    }
+
+    #logo-loading {
+      width: 120px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.4;
+        transform: scale(0.98);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0.4;
+        transform: scale(0.98);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+  </div>
+
+  <div id="boot-loading">
+    <svg id="logo-loading" width="96" height="96" viewBox="0 0 174 174" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M155.659 118.235V32.0936L148.314 25C117.888 26.2648 101.343 29.2853 87 41.0194C72.6574 29.2853 56.1118 26.2648 25.6858 25L18.3405 32.0936V118.235L24.613 125.291C29.1498 125.8 33.2935 126.324 37.0953 126.879L44.3524 113.642C40.6715 113.028 36.7152 112.46 32.4486 111.924V39.5486C57.0287 40.9744 68.4528 44.1116 78.1227 52.0487H95.8768C105.547 44.1114 116.971 40.9745 141.551 39.5486V111.924C137.285 112.46 133.328 113.028 129.647 113.642L136.904 126.879C140.706 126.324 144.85 125.8 149.387 125.291L155.659 118.235ZM122.258 129.554L115.204 116.688C109.143 118.312 103.899 120.276 99.2096 122.769C94.5706 125.235 90.612 128.145 87 131.568C83.388 128.145 79.4294 125.235 74.7904 122.769C70.1005 120.276 64.8565 118.312 58.7957 116.688L51.7417 129.554C58.6698 131.166 63.906 133.041 68.2007 135.324C73.3796 138.077 77.492 141.585 81.6162 146.488H92.3838C96.508 141.585 100.62 138.077 105.799 135.324C110.094 133.041 115.33 131.166 122.258 129.554Z"
+        fill="#10B981" />
+      <path
+        d="M141.248 134.801L136.904 126.879L129.647 113.642L95.8768 52.0487H78.1227L44.3524 113.642L37.0953 126.879L32.7522 134.801H14.1081V50.5525C14.1081 46.6315 10.9499 43.4529 7.05405 43.4529C3.15821 43.4529 0 46.6315 0 50.5525V141.9L7.05405 149H36.9162L43.0922 145.33L51.7417 129.554L58.7957 116.688L87 65.2467L115.204 116.688L122.258 129.554L130.908 145.33L137.084 149H166.946L174 141.9V50.5525C174 46.6315 170.842 43.4529 166.946 43.4529C163.05 43.4529 159.892 46.6315 159.892 50.5525V134.801H141.248Z"
+        fill="#155E75" />
+    </svg>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
