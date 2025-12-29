@@ -13,10 +13,13 @@ import { Separator } from "@/components/ui/separator"
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { RouterView } from "vue-router"
 import { useTagStore } from "@/stores/tag"
-import { onMounted } from "vue"
+import { onMounted, defineAsyncComponent } from "vue"
 import { useCollectionStore } from "@/stores/collection"
-import PdfReaderDialog from "@/components/dialogs/PdfReaderDialog.vue"
 import NetworkStatus from "@/components/NetworkStatus.vue"
+
+const PdfReaderDialog = defineAsyncComponent(
+  () => import("@/components/dialogs/PdfReaderDialog.vue"),
+)
 
 const { breadcrumbs } = useBreadcrumbs()
 const tagStore = useTagStore()

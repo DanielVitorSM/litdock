@@ -17,7 +17,7 @@ export default defineConfig({
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'android-192x192.png', 'android-512x512.png', 'assets/*'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json,vue,txt,woff2}'],
-        maximumFileSizeToCacheInBytes: 5000000,
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -66,4 +66,27 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('pdfjs-dist')) {
+              return 'pdf-lib'
+            }
+
+            if (id.includes('vue-pdf-embed')) {
+              return 'pdf-lib'
+            }
+
+            if (id.includes('lucide-vue-next')) {
+              return 'icons'
+            }
+
+            return 'vendor'
+          }
+        }
+      }
+    }
+  }
 })

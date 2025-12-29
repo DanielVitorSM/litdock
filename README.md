@@ -92,7 +92,7 @@ O projeto foi construído com as tecnologias mais modernas do ecossistema Vue:
 
 ### Pré-requisitos
 
-- Node.js 18+
+- Node.js 20+
 - Conta no Supabase
 
 ### Passo a Passo
