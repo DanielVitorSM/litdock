@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import GuestFooter from "@/components/GuestFooter.vue"
+import AuthLayout from "@/components/layouts/AuthLayout.vue"
 import { Button } from "@/components/ui/button"
-import { useAuthStore } from "@/stores/auth"
 import { ArrowRight, Palette, Zap, Code2, Focus, ArrowUpRight } from "lucide-vue-next"
-
-const authStore = useAuthStore()
 
 const features = [
   {
@@ -56,63 +53,27 @@ const steps = [
     description:
       "Mantenha o controle do seu progresso. Marque artigos como 'Lendo', 'Lido' ou 'Favorito' e filtre sua biblioteca visualmente para saber o que priorizar.",
   },
-  // {
-  //   number: "04",
-  //   title: "Exportação BibTeX",
-  //   description:
-  //     "Quando estiver pronto para escrever, gere um arquivo BibTeX limpo e padronizado a partir da sua seleção, pronto para integrar com LaTeX ou Overleaf.",
-  // },
 ]
 </script>
 
 <template>
-  <main class="min-h-screen bg-background">
-    <nav
-      class="fixed top-0 left-0 right-0 z-50 bg-card/50 backdrop-blur-xl border border-border/50"
-    >
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex h-16 items-center justify-between">
-          <div class="flex items-center gap-4">
-            <img src="/assets/logo.svg" class="h-8 w-8" alt="Logo" />
-            <img src="/assets/logo_name_light.svg" class="h-4 hidden md:block" alt="Logo Name" />
-          </div>
-
-          <div class="hidden md:flex items-center gap-8">
-            <a
-              href="#features"
-              class="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Funcionalidades
-            </a>
-            <a
-              href="#how-it-works"
-              class="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Como funciona
-            </a>
-          </div>
-
-          <div class="" v-if="authStore.isAuthenticated">
-            <router-link :to="{ name: 'home' }">
-              <Button class="bg-primary text-primary-foreground hover:bg-primary/90">
-                Acessar dashboard
-              </Button>
-            </router-link>
-          </div>
-          <div class="flex items-center gap-3" v-else>
-            <router-link :to="{ name: 'login' }">
-              <Button variant="ghost" class="text-muted-foreground"> Entrar </Button>
-            </router-link>
-
-            <router-link :to="{ name: 'register' }">
-              <Button class="bg-primary text-primary-foreground hover:bg-primary/90">
-                Criar conta
-              </Button>
-            </router-link>
-          </div>
-        </div>
+  <AuthLayout>
+    <template #nav>
+      <div class="hidden md:flex items-center gap-8">
+        <router-link
+          to="#features"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Funcionalidades
+        </router-link>
+        <router-link
+          to="#how-it-works"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Como funciona
+        </router-link>
       </div>
-    </nav>
+    </template>
 
     <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-16">
       <div class="absolute inset-0 pointer-events-none overflow-hidden">
@@ -280,7 +241,5 @@ const steps = [
         </div>
       </div>
     </section>
-
-    <GuestFooter />
-  </main>
+  </AuthLayout>
 </template>

@@ -10,13 +10,30 @@ NProgress.configure({ showSpinner: false })
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    ...guestRoutes,
-    ...authRoutes,
+    {
+      path: "/",
+      name: "landing",
+      component: () => import("@/pages/guest/LandingPage.vue"),
+      meta: { guest: true }
+    },
+    {
+      path: '/',
+      children: [...authRoutes, ...guestRoutes],
+      component: () => import('@/components/layouts/AuthLayout.vue'),
+    },
     {
       path: '/app',
       children: appRoutes,
       meta: { auth: true },
       component: () => import('@/components/layouts/AppLayout.vue'),
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('@/pages/guest/NotFoundPage.vue'),
+      meta: {
+        title: 'Página não encontrada',
+      }
     }
   ],
   scrollBehavior(to, from, savedPosition) {
@@ -36,7 +53,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  NProgress.start()
+  if (!to.hash) {
+    NProgress.start()
+  }
 
   const auth = useAuthStore()
 
