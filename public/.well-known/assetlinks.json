@@ -5,8 +5,10 @@
     ],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.litdock.app",
-      "sha256_cert_fingerprints": []
+      "package_name": "com.litdock.twa",
+      "sha256_cert_fingerprints": [
+        "B7:CE:6D:71:DA:D9:81:2D:DC:B6:84:36:29:C1:59:10:69:05:C1:EA:40:DE:DC:A1:BC:15:A0:55:22:9E:12:7C"
+      ]
     }
   }
 ]
