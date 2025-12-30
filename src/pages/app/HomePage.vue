@@ -55,7 +55,7 @@ useInfiniteScroll(
       loadMore()
     }
   },
-  { distance: 10 }, // Distância em px do fundo para disparar
+  { distance: 10 },
 )
 
 const changeShowType = (type: ReferenceShowType) => {
@@ -106,11 +106,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav class="flex gap-4">
+  <nav class="flex gap-4 pt-4 px-4">
     <InputGroup class="flex-grow">
       <InputGroupInput
         v-model="filters.search"
         placeholder="Buscar por título, autor ou tag..."
+        name="search"
         class="transition-all focus:ring-2 ring-primary/20"
       />
       <InputGroupAddon>
@@ -124,7 +125,7 @@ onMounted(() => {
       </InputGroupAddon>
     </InputGroup>
 
-    <div class="flex gap-1">
+    <div class="hidden xl:flex gap-1">
       <Button
         :variant="showType === 'list' ? 'secondary' : 'ghost'"
         size="icon"
@@ -145,7 +146,7 @@ onMounted(() => {
     </div>
   </nav>
 
-  <div class="flex items-center justify-between" v-if="total > 0 && !loading">
+  <div class="flex items-center px-4 justify-between" v-if="total > 0 && !loading">
     <span class="text-sm text-neutral-400">
       {{ total == 1 ? "1 referência" : total + " referências" }}
     </span>
@@ -175,7 +176,7 @@ onMounted(() => {
     </DropdownMenu>
   </div>
 
-  <ScrollArea class="flex-1">
+  <ScrollArea class="flex-grow px-4 overflow-hidden">
     <div class="p-0.5">
       <ItemGroup
         class="grid auto-rows-min gap-4"

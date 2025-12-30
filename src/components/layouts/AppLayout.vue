@@ -35,7 +35,7 @@ onMounted(() => {
   <SidebarProvider>
     <AppSidebar />
 
-    <SidebarInset>
+    <SidebarInset class="h-[100dvh]">
       <header
         class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12"
       >
@@ -68,7 +68,8 @@ onMounted(() => {
           </Breadcrumb>
         </div>
       </header>
-      <div class="flex flex-1 flex-col gap-4 p-4 pt-0 relative">
+
+      <div class="flex flex-grow overflow-hidden flex-col gap-4 relative">
         <router-view />
       </div>
     </SidebarInset>
