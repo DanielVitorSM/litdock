@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button"
 import { useReferenceStore } from "@/stores/reference"
 import type { Reference } from "@/types/reference.types"
 import { Spinner } from "@/components/ui/spinner"
+import { toast } from "vue-sonner"
 
 const formRef = ref<InstanceType<typeof ReferenceForm> | null>(null)
 const loading = ref(false)
@@ -28,7 +29,10 @@ const onSubmit = computed(() =>
     loading.value = true
     referenceStore
       .addReference(data)
-      .then(() => emit("back"))
+      .then(() => {
+        toast.success("Referência salva com sucesso!")
+        emit("back")
+      })
       .finally(() => (loading.value = false))
   }),
 )

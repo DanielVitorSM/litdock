@@ -22,6 +22,7 @@ import { fieldsByReferenceType } from "@/lib/reference/fields"
 import { buildReferenceSchema } from "@/lib/reference/validation"
 import { toTypedSchema } from "@vee-validate/zod"
 import { PaperUploadInput } from "../inputs"
+import type { Reference } from "@/types/reference.types"
 
 const formSchema = computed(() => toTypedSchema(buildReferenceSchema(type.value)))
 
@@ -68,7 +69,13 @@ const visibleFields = computed(() => {
   return [...required, ...optional]
 })
 
-defineExpose({ handleSubmit })
+defineExpose({
+  handleSubmit: (cb: (data: Partial<Reference>) => void) => {
+    return handleSubmit((values) => {
+      cb({ ...values, type: type.value })
+    })
+  },
+})
 </script>
 
 <template>
