@@ -61,7 +61,13 @@ const onSubmit = handleSubmit((data) => {
       <CardContent>
         <form id="register-form" novalidate @submit="onSubmit">
           <FieldGroup class="gap-3">
-            <VeeInput :disabled="loading" label="Nome" name="name" placeholder="Seu nome" />
+            <VeeInput
+              autofocus
+              :disabled="loading"
+              label="Nome"
+              name="name"
+              placeholder="Seu nome"
+            />
             <VeeInput :disabled="loading" label="Email" name="email" placeholder="m@exemplo.com" />
             <VeeInput label="Senha" name="password" v-slot="{ field, errors }">
               <InputGroupPassword

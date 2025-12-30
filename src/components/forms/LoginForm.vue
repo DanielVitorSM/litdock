@@ -58,7 +58,6 @@ const onSubmit = handleSubmit((data) => {
               label="Email"
               name="email"
               autofocus
-              tabindex="1"
               placeholder="Seu email"
             />
             <VeeInput label="Senha" name="password">
@@ -72,8 +71,8 @@ const onSubmit = handleSubmit((data) => {
               </template> -->
               <template v-slot="{ field, errors }">
                 <InputGroupPassword
-                  :disabled="loading"
                   v-bind="field"
+                  :disabled="loading"
                   :aria-invalid="!!errors.length"
                   id="password"
                   name="password"

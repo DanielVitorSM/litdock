@@ -13,6 +13,8 @@ const attrs = useAttrs() as InputHTMLAttributes
 
 const type = computed(() => (visible.value ? "text" : "password"))
 const title = computed(() => (visible.value ? "Ocultar senha" : "Ver senha"))
+
+defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
@@ -24,6 +26,7 @@ const title = computed(() => (visible.value ? "Ocultar senha" : "Ver senha"))
         :title="title"
         size="icon-xs"
         type="button"
+        tabindex="-1"
         @click="visible = !visible"
       >
         <Eye v-if="visible" />
